@@ -1,0 +1,153 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\setCJKmainfont{Kai}
+
+\title{数学物理方法II\\第一次作业}
+\author{\\董建宇  ~2019511017}
+\date{三月14日}
+
+\begin{document}
+\maketitle
+\newpage
+\large
+\section{}
+在极坐标系中任意一点P的坐标可以写为（r，$\theta $）\\
+\indent
+在极坐标系下的速度可以写为：$$\vec{v} = \frac{d^{} \vec{r} }{d t^{}} = \frac{dr}{dt} \vec{e_r} ~+~ r\frac{d\theta }{dt}\vec{e_\theta } = \overset{.}{r} \vec{e_r} ~+~ r\overset{.}{\theta }\vec{e_\theta }$$
+\indent
+极坐标系中加速度可以写为：$$\vec{a} = \frac{d \vec{v}}{dt} = \frac{d^2r}{dt^2}\vec{e_r} ~+~ \frac{dr}{dt} \frac{d \vec{e_r}}{dt } ~+~ \frac{dr}{dt} \frac{d\theta }{dt} \vec{e_\theta } ~+~ r \frac{d^2 \theta }{dt^2} \vec{e_\theta } ~+~ r\frac{d\theta }{dt} \frac{d\vec{e_\theta}}{dt}$$
+\indent
+其中，两个单位向量对时间导数为：$$\frac{d \vec{e_r}}{dt} = \frac{d\theta }{dt} \vec{e_\theta}, \frac{d\vec{e_\theta}}{dt} = -\frac{d\theta }{dt} \vec{e_r}$$\indent
+所以加速度为：$$\vec{a} = (\overset{..}{r}-r\overset{.}{\theta}^2)\vec{e_r} ~+~ (r\overset{..}{\theta } + 2\overset{.}{r}\overset{.}{\theta })\vec{e_\theta }$$
+
+\section{}
+因为$\vec{r} = \vec{x} - \vec{x'} = (x - x')\vec{e_x} + (y-y')\vec{e_y} + (z-z')\vec{e_z}$,则有r = | $\vec{r}$ | = $\sqrt{(x-x')^2 + (y-y')^2 + (z-z')^2} $\\
+\subsection{}\large
+$\bigtriangledown \frac{1}{r} = -\frac{(x-x')\vec{e_x} + (y-y')\vec{e_y} + (z-z')\vec{e_z}}{\left((x-x')^2 + (y-y')^2 + (z-z')^2\right)^{\frac{3}{2}}} = -\frac{\vec{r}}{r^ 3}$
+
+\subsection{}\large
+$\bigtriangledown \times \frac{\vec{r}}{r^3} = 
+\begin{vmatrix}
+    \vec{e_x} & \vec{e_y} & \vec{e_z}\\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+    \frac{x-x'}{r^3} & \frac{y-y'}{r^3} & \frac{z-z'}{r^3}
+\end{vmatrix}\\\indent
+= [\frac{-3(z-z')(y-y')}{r^5}+\frac{3(z-z')(y-y')}{r^5}]\vec{e_x} + [\frac{-3(z-z')(x-x')}{r^5}+\frac{3(z-z')(x-x')}{r^5}]\vec{e_y} + [\frac{-3(x-x')(y-y')}{r^5}+\frac{3(x-x')(y-y')}{r^5}]\vec{e_z} \\\indent
+= \vec{0}
+$\\
+\indent
+即：$\bigtriangledown \times \frac{\vec{r}}{r^3} = \vec{0}$
+
+\subsection{}
+$\bigtriangledown \times \vec{r} = 
+\begin{vmatrix}
+    \vec{e_x} & \vec{e_y} & \vec{e_z}\\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+    x-x' & y-y' & z-z'
+\end{vmatrix}
+=\vec{0}
+$
+
+\section{}
+设球坐标表示为($r,\theta,\varphi$)，对应的直角坐标为($x,y,z$)，则有：$$ x = r\sin \theta \cos \varphi, ~  y = r\sin \theta \sin \varphi, ~ z = r\cos \theta $$\indent 
+对上列三个等式进行微分，得到：
+$$dx = \sin \theta \cos \varphi dr + r\cos \theta \cos \varphi d\theta - r\sin \theta \sin \varphi d\varphi $$
+$$dy = \sin \theta \sin \varphi dr + r\cos \theta \sin \varphi d\theta + r\sin \theta \cos \varphi d\varphi $$
+$$dz = \cos \theta dr - r\sin \theta d\theta $$\indent
+反解出$dr,~d\theta,~d\varphi$得到：
+$$dr = \sin \theta \cos \varphi dx + \sin \theta \sin \varphi dy + \cos \theta dz$$
+$$d\theta = \frac{\cos \theta \cos \varphi }{r}dx + \frac{\cos \theta \sin \varphi }{r}dy - \frac{\sin \theta}{r}dz$$
+$$d\varphi = -\frac{\sin \varphi }{r\sin \varphi }dx + \frac{\cos \varphi }{r\sin \theta }dy$$\indent
+则有：
+$$\frac{\partial}{\partial x} = \frac{\partial r}{\partial x} \frac{\partial}{\partial r} + \frac{\partial \theta}{\partial x} \frac{\partial}{\partial \theta} + \frac{\partial \varphi}{\partial x} \frac{\partial}{\partial \varphi} = \sin \theta \cos \varphi \frac{\partial}{\partial r} + \frac{\cos \theta \cos \varphi }{r}\frac{\partial}{\partial \theta} - \frac{\sin \varphi}{r\sin \theta}\frac{\partial}{\partial \varphi }$$
+$$\frac{\partial}{\partial y} = \frac{\partial r}{\partial y} \frac{\partial}{\partial r} + \frac{\partial \theta}{\partial y} \frac{\partial}{\partial \theta} + \frac{\partial \varphi}{\partial y} \frac{\partial}{\partial \varphi} = \sin \theta \sin \varphi \frac{\partial}{\partial r} + \frac{\cos \theta \sin \varphi }{r}\frac{\partial}{\partial \theta} + \frac{\cos \varphi}{r\sin \theta}\frac{\partial}{\partial \varphi}$$
+$$\frac{\partial}{\partial z} = \frac{\partial r}{\partial z} \frac{\partial}{\partial r} + \frac{\partial \theta}{\partial z} \frac{\partial}{\partial \theta} + \frac{\partial \varphi}{\partial z} \frac{\partial}{\partial \varphi} = \cos \theta \frac{\partial}{\partial r} - \frac{\sin \theta}{r}\frac{\partial}{\partial \theta}$$
+$$\frac{\partial ^2}{\partial x^2} = \frac{\partial r}{\partial x}(\frac{\partial }{\partial x})\frac{\partial }{\partial r} + \frac{\partial \theta }{\partial x}(\frac{\partial }{\partial x})\frac{\partial }{\partial \theta } + \frac{\partial \varphi }{\partial x}(\frac{\partial}{\partial x})\frac{\partial}{\partial \varphi } $$
+$$ = \sin^2 \theta \cos^2 \varphi \frac{\partial^2}{\partial r^2} + \frac{\cos^2\theta \cos^2\varphi }{r^2}\frac{\partial^2}{\partial \theta^2} + \frac{\sin^2 \varphi}{r^2\sin^2\theta}\frac{\partial^2}{\partial \varphi^2}$$
+$$ + \frac{2\sin \theta \cos \theta \cos^2\varphi }{r}\frac{\partial^2}{\partial r \partial \theta } - \frac{2\sin \varphi \cos \varphi}{r}\frac{\partial^2}{\partial r \partial \varphi} - \frac{2\cos \theta \sin \varphi \cos \varphi}{r^2\sin \theta}\frac{\partial^2}{\partial \theta \partial \varphi}$$
+$$ + \frac{\cos^2\theta \cos^2\varphi + \sin^2\theta}{r}\frac{\partial}{\partial r} + \frac{2\sin\varphi \cos\varphi}{r^2\sin^2\theta }\frac{\partial}{\partial \varphi} - \frac{2\sin^2\theta \cos\theta \cos^2\varphi - \cos\theta \sin^2\varphi }{r^2\sin\theta}\frac{\partial }{\partial \theta}$$
+\\\\
+$$\frac{\partial^2}{\partial y^2} = \frac{\partial r}{\partial y}(\frac{\partial }{\partial y})\frac{\partial }{\partial r} + \frac{\partial \theta }{\partial y}(\frac{\partial }{\partial y})\frac{\partial }{\partial \theta } + \frac{\partial \varphi }{\partial y}(\frac{\partial}{\partial y})\frac{\partial}{\partial \varphi }$$
+$$ = \sin^2\theta \sin^2\varphi \frac{\partial^2}{\partial r^2} + \frac{\cos^2\theta \sin^2\varphi }{r^2}\frac{\partial^2}{\partial \theta^2} + \frac{\cos^2\varphi}{r^2\sin^2\theta}\frac{\partial^2}{\partial \theta^2}$$
+$$ + \frac{2\sin\theta \cos\theta \sin^2\varphi}{r}\frac{\partial^2}{\partial r \partial\varphi} + \frac{2\sin\varphi \cos\varphi }{r}\frac{\partial^2}{\partial r \partial\varphi } + \frac{2\cos\theta \sin\varphi \cos\varphi }{r^2\sin^2\theta }\frac{\partial^2}{\partial\theta \partial\varphi}$$
+$$ + \frac{\cos^2\theta \sin^2\varphi + \cos^2\varphi }{r}\frac{\partial}{\partial r} - \frac{2\sin\varphi \cos\varphi}{r^2\sin^2\theta }\frac{\partial }{\partial \varphi} - \frac{2\sin^2\theta \cos\theta \sin^2\varphi - \cos\theta \cos^2\varphi }{r^2\sin\theta }\frac{\partial }{\partial\theta}$$
+\\\\
+$$\frac{\partial^2}{\partial z^2} = \frac{\partial r}{\partial z}(\frac{\partial }{\partial z})\frac{\partial }{\partial r} + \frac{\partial \theta }{\partial z}(\frac{\partial }{\partial z})\frac{\partial }{\partial \theta } + \frac{\partial \varphi }{\partial z}(\frac{\partial}{\partial z})\frac{\partial}{\partial \varphi }$$
+$$ = \cos^2\theta\frac{\partial^2}{\partial z^2} + \frac{\sin^2\theta}{r^2}\frac{\partial^2}{\partial\theta^2} - \frac{2\sin\theta\cos\theta}{r}\frac{\partial^2}{\partial r \partial\theta } + \frac{2\sin\theta\cos\theta}{r^2}\frac{\partial}{\partial \theta} + \frac{\sin^2\theta }{r}\frac{\partial}{\partial r}$$\indent
+在笛卡尔坐标系中，拉普拉斯算符表示为：$$\bigtriangledown ^2 = \frac{\partial ^2}{\partial x^2} + \frac{\partial ^2}{\partial y^2} + \frac{\partial ^2}{\partial z^2}$$\indent
+则进一步可以计算得拉普拉斯算符在球坐标下的表示形式为：$$\bigtriangledown ^2 = \frac{\partial ^2}{\partial r^2} + \frac{2}{r}\frac{\partial}{\partial r} + \frac{1}{r^2}\frac{\partial ^2}{\partial \theta^2} + \frac{\cos\theta}{r^2\sin\theta}\frac{\partial }{\partial \theta} + \frac{1}{r^2\sin^2\theta}\frac{\partial^2}{\partial\varphi^2}$$
+
+\section{}
+由题意可知，垂直于细杆方向的截面上每一点的力与位移相同，则以细杆最左端为原点，细杆方向为x轴。选取(x,x+$\Delta$x)为研究对象，由Hooke定律可知：$$S\rho(x)\Delta x\frac{\partial^2 u(\overline{x} ,t)}{\partial t^2} = Y(x)Su_x|_{x+\Delta x} - Y(x)Su_x|_{x} + f_0(\overline{x},t)\Delta x$$\indent
+$\overline{x}$为研究对象质心的坐标。令$\Delta x \to 0$，进一步化简可得：$$\frac{\partial }{\partial t}\left(\rho(x)\frac{\partial u}{\partial t}\right) = \frac{\partial}{\partial x}\left(Y(x)\frac{\partial u}{\partial x}\right) + \frac{f_0(x,t)}{S}$$
+\subsection{}
+当x=0处固定时，边界条件为$$u(0,t) = 0$$
+\subsection{}
+当x=0处受G(t)的横向外力时，边界条件为$$\frac{\partial^2u}{\partial t^2} = \frac{Y(0)}{\rho(0)}\frac{\partial^2u}{\partial x^2} + \frac{G(t)}{\rho(0)S}$$
+
+\section{}
+$\cos^2x$的傅立叶变换为：$$F(\omega ) = \int_{-\infty}^{+\infty} \cos^2(x)e^{-i\omega x}\,dx = \frac{1}{2}\int_{-\infty}^{+\infty} (1 + \cos2x)e^{-i\omega x}\,dx = \pi\delta(\omega)+\frac{1}{2}\pi[\delta(\omega+2)+\delta(\omega-2)]$$
+\indent
+因为$\cos^2x$为偶函数，则其的傅立叶级数中$b_n(n\geqslant 1,~ n\in N^*)$为0。$$a_0 = \frac{1}{2\pi}\int_{-\pi}^{\pi} \cos^2x \,dx = \frac{1}{2}$$ 
+\begin{equation*}
+a_n = \frac{1}{\pi}\int_{-\pi}^{\pi} \cos^2x \cos nx \,dx = 
+\left\{
+    \begin{array}{rcl}
+        2, & & n = \frac{1}{2} \\
+        0, & & n \neq 2 ~ and ~ n\in N^*
+    \end{array}
+\right.
+\end{equation*}
+\indent
+则其傅立叶展开为：$$f(x) = \frac{1}{2} + \frac{1}{2}cos(2x)$$
+
+\section{}
+定义在(0,$\infty$)上的f(t)为$$f(t) = \left\{
+\begin{array}{rcl}
+    h & & (0<t<T),\\
+    0 & & (T<t).
+\end{array}\right.$$
+\subsection{}
+当边界条件为f'(0) = 0时，可以对f(t)进行偶延拓，将f(t)展成傅立叶积分为$$F(\omega) = 2\int_{0}^{+\infty} f(t)\cos(\omega t) \,dt = 2\int_0^T h\cos(\omega t) \,dt = \frac{2h}{\omega}\sin(\omega T)$$ $$f(t) = \frac{1}{2\pi}\int_{0}^{+\infty} F(\omega) e^{i\omega t} \,d\omega = \int_{0}^{+\infty} \frac{h}{\pi\omega}\sin(\omega T) e^{i\omega t} \,d\omega$$
+\subsection{}
+当边界条件为f(0) = 0时，可以对f(t)进行奇延拓，将f(t)展成傅立叶积分为$$F(\omega) = -2i\int_{0}^{+\infty} f(t)\sin(\omega t) \,dt = -2i\int_0^T h\sin(\omega t) \,dt = \frac{2ih}{\omega}\left(\cos(\omega T) - 1\right)$$ $$f(t) = \frac{1}{2\pi} \int_{0}^{+\infty} F(\omega) e^{i\omega t} \,d\omega = \int_{0}^{+\infty} \frac{ih}{\pi\omega} \left(\cos(\omega T)-1\right) e^{i\omega t} \,d\omega$$
+
+\section{}
+求解$\frac{d^2 T}{d t^2} + \omega^2a^2T = g(t) $，可以先求解$\frac{d^2 T}{d t^2} + \omega^2a^2T = 0 $。解得：$$T(t) = C_1 \cos(\omega at) +C_2\sin(\omega at)~~~ C_1 ~and ~C_2 ~are ~constants$$\indent
+原非齐次方程的解为齐次方程的通解加非齐次方程的特解，即原方程的解可以写为$$T(t) = C_1 \cos(\omega at) +C_2\sin(\omega at) + T_0(t)$$\\\indent
+然后利用常数变易法，假设非齐次方程$\frac{d^2 T}{d t^2} + \omega^2a^2T = g(t) $也具有形如$$T_0(t) = C_3(t) \cos(\omega at) +C_4(t) \sin(\omega at)$$的特解，但是$C_3(t)~C_4(t)$为待定函数。带入求解方程，令$$C_3'(t)\cos(\omega at) + C_4'\sin(\omega at) = 0$$\indent
+可得：$$C_3(t) = -\int_{t_0}^{t} \frac{\sin(\omega ax)g(x)}{\omega a} \,dx,~~~C_4(t) = \int_{t_0}^{t} \frac{\cos(\omega ax)g(x)}{\omega a} \,dx,~~~t_0 ~is ~a ~constant$$
+则原方程的解为$$T(t) = \left(-\int_{t_0}^{t} \frac{\sin(\omega ax)g(x)}{\omega a} \,dx + C_1\right)\cos(\omega at) + \left(\int_{t_0}^{t} \frac{\cos(\omega ax)g(x)}{\omega a} \,dx + C_2\right)\sin(\omega at)$$
+
+\section{}
+假设拉盖尔方程$t\frac{d^2 y}{d t^2} + (1-t)\frac{d y}{d t} + \lambda y = 0$的解为：$$y = \sum_{k=0}^n a_kt^k$$\indent
+则有$$\frac{d y}{dt} = \sum_{k=1}^n ka_k t^{k-1}$$ $$\frac{d^2 y}{dt^2} = \sum_{k=2}^n k(k-1) a_k t^{k-2}$$\indent
+代入原方程，可得$$\sum_{k=2}^n k(k-1)a_k t^{k-1} + \sum_{k=1}^n ka_k t^{k-1} - \sum_{k=1}^n ka_k t^k + \sum_{k=0}^n \lambda a_k t^k = 0$$\indent
+则有$$a_{k+1} = \frac{k-\lambda}{(k+1)^2}a_k$$\indent
+所以$$a_n = \frac{(n-1-\lambda)(n-2-\lambda)...(1-\lambda)(-\lambda)}{\left(n!\right)^2}a_0$$\indent
+使上式在n有限的条件下成立，即要求存在一个正整数N，当$n\geqslant N$时，$t^n$系数为$a_n = 0$。所以当$\lambda$取非负整数时可以使方程的解为多项式。
+
+\end{document}

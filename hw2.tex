@@ -1,0 +1,164 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\setCJKmainfont{Kai}
+
+\title{数学物理方法
+\\第二次作业}
+\author{\\董建宇   ~~2019511017}
+\date{三月25日}
+
+\begin{document}
+    
+\maketitle
+\newpage
+
+\section{}
+证明：
+\subsection{}
+在三维球坐标中，利用坐标变换$x=r\sin\theta\cos\varphi,y=r\sin\theta\sin\varphi,z=r\cos\theta$，其坐标变换的Jacobe行列式为$$J=\begin{bmatrix}
+    \sin\theta\cos\varphi & r\cos\theta\cos\varphi & -r\sin\theta\sin\varphi\\
+    \sin\theta\sin\varphi & r\cos\theta\sin\varphi & r\sin\theta\cos\varphi\\
+    \cos\theta & -r\sin\theta & 0
+\end{bmatrix} = r^2\sin\theta.$$\indent
+所以$\delta$函数在球坐标下的表达式为$$\delta\left(\vec{r} - \vec{r}_0\right) = \frac{1}{r^2\sin\theta}\delta(r-r_0)\delta(\theta-\theta_0)\delta(\varphi-\varphi_0) = \frac{1}{r^2}\delta(r-r_0)\delta(\cos\theta-\cos\theta_0)\delta(\varphi-\varphi_0)$$
+\subsection{}
+$$\nabla^2\frac{1}{\left\lvert \vec{r}-\vec{r}_0 \right\rvert} = -\nabla\cdot \frac{\vec{r}-\vec{r}_0}{\left\lvert \vec{r}-\vec{r}_0 \right\rvert ^3}$$\indent
+令$\vec{l} = \vec{r}-\vec{r}_0$，则$\frac{\vec{r}-\vec{r}_0}{\left\lvert \vec{r}-\vec{r}_0 \right\rvert ^3} = \frac{\hat{l}}{l^2}$。当$\hat{l}\neq \vec{0}$时，利用求坐标可知$$\nabla\cdot\frac{\hat{l}}{l^2} = \frac{1}{l^2} \frac{\partial }{\partial l}\left(l^2 \frac{1}{l^2}\right) = 0.$$\indent
+\def\ooint{{\bigcirc}\kern-11.5pt{\int}\kern-6.5pt{\int}}
+当$\hat{l}=\vec{0}$时，存在$$\iiint_{R\to 0} \nabla\cdot \frac{\vec{r}-\vec{r}_0}{\left\lvert \vec{r}-\vec{r}_0 \right\rvert ^3} \,dV = \ooint \frac{\hat{l}}{l^2}\cdot\,d\vec{a} =4\pi$$\indent
+所以$$\nabla^2\frac{1}{\left\lvert \vec{r}-\vec{r}_0 \right\rvert} = -\nabla\cdot \frac{\vec{r}-\vec{r}_0}{\left\lvert \vec{r}-\vec{r}_0 \right\rvert ^3} = -4\pi\delta(\vec{r}-\vec{r}_0)$$
+
+\section{}
+\subsection{}
+由复数欧拉公式$e^{i\omega t} = \cos(\omega t) + i\sin(\omega t)$，可知$$\int_{-\infty}^{+\infty} \frac{\cos(\omega t)}{\omega^2 + a^2} \,d\omega = Re\left(\int_{-\infty}^{+\infty} \frac{e^{i\omega t}}{\omega^2 + a^2} \,d\omega \right) $$\indent
+由留数定理可知：$$\int_{-\infty}^{+\infty} \frac{e^{i\omega t}}{\omega^2 + a^2} \,d\omega = \frac{\pi}{a} e^{-a\left\lvert t\right\rvert }$$\indent
+即$$\int_{-\infty}^{+\infty} \frac{\cos(\omega t)}{\omega^2 + a^2} \,d\omega = Re\left(\int_{-\infty}^{+\infty} \frac{e^{i\omega t}}{\omega^2 + a^2} \,d\omega \right) = \frac{\pi}{a} e^{-a\left\lvert t\right\rvert }$$
+\subsection{}
+\subsubsection{}
+由定义可知：$$F(k_1,k_2,k_3)=\sqrt{2\pi}\iiint \frac{1}{r}e^{-i2\pi\vec{r}\cdot\vec{k}} \,dx\,dy\,dz$$\indent
+利用求坐标变换，其Jacobe行列式为$(J=r^2\sin\theta)$。则原积分可化为：$$\begin{aligned}
+    F(k_1,k_2,k_3) &= \sqrt{2\pi}\int_0^{2\pi} \,d\varphi \int_0^{\pi} \,d\theta \int_0^{\infty} r\sin\theta e^{-i2\pi kr\cos\theta} \,dr\\
+    &=-\frac{1}{\sqrt{2\pi} k^2}\int_0^{\pi} \frac{\sin\theta}{\cos^2\theta}\,d\theta = \sqrt{\frac{2}{\pi}}\frac{1}{k^2}
+\end{aligned}$$\indent
+\subsubsection{}
+由定义可知：$$G(\vec{k})=\frac{1}{2\pi\sqrt{2\pi}}\iiint \sqrt{\frac{\pi}{2}}\frac{\delta(r-a)}{r}e^{-i \vec{r}\cdot\vec{k}}\,dx\,dy\,dz$$\indent
+利用求坐标变换，其Jacobe行列式为$r^2\sin\theta$。则原积分可化为：$$\begin{aligned}
+    G(\vec{k})&=\frac{1}{4\pi} \int_0^{2\pi} \,d\varphi \int_0^{\pi} \,d\theta \int_0^{\infty} \delta(r-a)r\sin\theta e^{-i kr\cos\theta}\,dr\\
+    &=\frac{1}{2}\int_0^{\pi}a\sin\theta e^{-ika\cos\theta} \,d\theta = \frac{\sin ak}{k}
+\end{aligned}$$
+
+\section{}
+因为f(t)的拉普拉斯变换存在，设为F(p)，则有：$$F(p)=\int_0^{+\infty} f(t)e^{-pt}\,dt$$\indent
+又因为f(t)为周期函数，周期为a，即f(t+a)=f(t)，令u=t+a，则有：$$F(p)=\int_0^{+\infty} f(t)e^{-pt}\,dt = \int_0^{+\infty} f(t+a)e^{-pt}\,dt = e^{ap}\int_a^{+\infty}f(u)e^{-pu}\,du$$\indent
+所以$$F(p)\left(1-e^{-ap}\right) = \int_0^a f(t)e^{-pt}\,dt$$\indent
+即：$$F(p) = \frac{1}{1-e^{-ap}} \int_0^a f(t)e^{-pt}\,dt$$
+
+\section{}
+令$\lambda$为轻绳质量线密度，选取坐标x处一段长度为$\Delta x$微元为研究对象，由于轻绳以$\omega$角速度匀速转动，则x处对于x到l轻绳的力恰好提供圆周运动向心力，则有：$$F(x)=\int_x^l \lambda \omega^2 x\,dx=\frac{1}{2}\lambda\omega^2(l^2-x^2)$$\indent
+对于研究对象，u增大为正方向，由牛顿第二定律可知：$$\lambda \Delta x\frac{\partial^2u}{\partial t^2}=-F(x)\sin(\alpha_1)-F(x+\Delta x)\sin(\alpha_2)$$\indent
+由于角度很小，可以利用小角度近似有：$$\sin(\alpha_1)=\left.\frac{\partial u}{\partial x}\right\rvert_{x},~\sin(\alpha_2)=-\left.\frac{\partial u}{\partial x}\right\rvert_{x+\Delta x}$$\indent
+所以得到$$\lambda \Delta x\frac{\partial^2u}{\partial t^2} = \frac{1}{2}\lambda\omega^2 \left[\left.\frac{\partial u}{\partial x}\right\rvert_{x+\Delta x}(l^2-(x+\Delta x)^2) - \left.\frac{\partial u}{\partial x}\right\rvert_{x}(l^2-x^2)\right]$$\indent
+两侧同时除以$\lambda\Delta x$，并令$\Delta x\to 0$，可得振动方程为：$$\frac{\partial^2 u}{\partial t^2}=\frac{1}{2}\omega^2 \frac{\partial}{\partial x}\left[(l^2-x^2)\frac{\partial u}{\partial x}\right]$$
+
+\section{}
+由题意可知，在x=0与x=l处由恒定的热流进入，则边界条件为：$$\left.\frac{\partial u}{\partial x}\right\rvert_{x=0}=q_0,~\left.\frac{\partial u}{\partial x}\right\rvert_{x=l}=-q_0$$
+
+\section{}
+由题意可知：弦振动过程中两端为自由端，则方程及边界条件可写为：$u_x(0,t)=0,~u_x(L,t)=0$，可以得到：
+$$\begin{cases}
+    \frac{\partial^2u}{\partial t^2}=a^2\frac{\partial^2u}{\partial x^2}\\
+    u(x,0)=\varphi(x)=\begin{cases}
+        \frac{h}{c}x,0<x\leqslant c,\\
+        \frac{h}{L-c}(L-x),c<x<L,
+    \end{cases}\\
+    u_t(x,0)=0\\
+    u_x(0,t)=0,~u_x(L,t)=0
+\end{cases}$$\indent
+
+\section{}
+待求问题利用叠加原理可以转化为如下两个问题：对于$(-\infty<x<+\infty,t>0)$$$\begin{cases}
+    \frac{\partial^2 u}{\partial t^2} = a^2\frac{\partial^2u}{\partial x^2}\\
+    u(x,0) = e^{-2x^2},u_t(x,0) = \sin(x)
+\end{cases}\begin{cases}
+    \frac{\partial^2 u}{\partial t^2} = a^2\frac{\partial^2u}{\partial x^2} + \cos(\omega t)\cos(x)\\
+    u(x,0) = 0,u_t(x,0) = 0
+\end{cases}$$\indent
+对于问题一：其通解可以写成$u(x,t) = f_1(x+at)+f_2(x-at)$，带入初始边界条件可以得到：$$\left\{\begin{aligned}
+    f_1(x)+f_2(x)=&e^{-2x^2}\\
+    af_1'(x)-af_2'(x)=&\sin(x)
+\end{aligned}\right.$$\indent
+可以解得：$$\left\{\begin{aligned}
+    f_1(x)=&\frac{1}{2}e^{-2x^2}+\frac{1}{2a}(1-\cos(x))+\frac{C}{2}\\
+    f_2(x)=&\frac{1}{2}e^{-2x^2}-\frac{1}{2a}(1-\cos(x))-\frac{C}{2}
+\end{aligned}\right.$$\indent
+所以问题一的解可以写为：$$u_1(x,t)=f_1(x+at)+f_2(x-at)=\frac{1}{2}\left(e^{-2(x+at)^2}+e^{-2(x-at)^2}\right)-\frac{1}{2a}\left(\cos(x+at)-\cos(x-at)\right)$$\indent
+对于问题二：利用齐次化定理，找到一个函数w(x,t;$\tau$)满足如下方程：$$\begin{cases}
+    \frac{\partial^2 w}{\partial t^2} = a^2\frac{\partial^2w}{\partial x^2}, ~t>\tau>0\\
+    \left. w\right\rvert _{t-\tau=0}=0,~\left. w_t\right\rvert_{t-\tau=0}=\cos(\omega t)\cos(x)
+\end{cases}$$\indent
+利用达朗贝尔公示，可得$$\begin{aligned}
+    &w(x,t;\tau)=\frac{1}{2a}\int_{x-a(t-\tau)}^{x+a(t-\tau)} \cos(\omega t)\cos(\xi)\,d\xi\\
+    &=\frac{1}{4a}\{\sin[(\omega-a)\tau+x+at]+\sin[(\omega-a)\tau-x+at]-\sin[(\omega+a)\tau-x-at]-\sin[(\omega+a)\tau+x-at]\}
+\end{aligned}$$\indent
+所以问题二的解为：$$\begin{aligned}
+    &u_2(x,t)=\int_0^tw(x,t;\tau)\,d\tau\\ 
+    &= \frac{1}{2(\omega^2-a^2)}\left[\cos(at+x)+\cos(at-x)\right]-\frac{1}{2(\omega^2-a^2)}\left[\cos(\omega t+x)+\cos(\omega t-x)\right]
+\end{aligned}$$\indent
+所以原问题的解为：$$\begin{aligned}
+    u(x,t)=&u_1(x,t)+u_2(x,t)\\
+    =&\frac{1}{2}\left(e^{-2(x+at)^2}+e^{-2(x-at)^2}\right)-\frac{1}{2a}\left(\cos(x+at)-\cos(x-at)\right)\\
+    &+\frac{1}{2(\omega^2-a^2)}\left[\cos(at+x)+\cos(at-x)\right]-\frac{1}{2(\omega^2-a^2)}\left[\cos(\omega t+x)+\cos(\omega t-x)\right]
+\end{aligned}$$
+
+\section{}
+由题意可知，端点x=0处不受垂直方向的力，对系统进行偶延拓得：$$\begin{cases}
+    \frac{\partial^2u}{\partial t^2}=a^2\frac{\partial^2u}{\partial x^2},& -\infty<x<\infty,t>0,\\
+    u(x,0)=\sin(x),u_t(x,0)=0,& 0\leqslant x<\infty,\\
+    u(x,0)=\sin(-x),u_t(x,0)=0,& -\infty<x<0,\\
+    u_x(0,t)=0,&t>0.
+\end{cases}$$\indent
+当$x-at\geqslant 0,t>0$时，由达朗贝尔公式可得：$$u(x,t) = \frac{1}{2}\left[\sin(x+at)+\sin(x-at)\right]$$\indent
+当$x-at<0,t>0,x\geqslant 0$时，$-(at-x)\geqslant 0$，由达朗贝尔公式可得：$$u(x,t)=\frac{1}{2}\left[\sin(x+at)+\sin(at-x)\right]$$\indent
+综上所述，初始位置为$\sin(x)$，初始速度为0的边界条件下，u的解为：$$u(x,t)=\begin{cases}
+    \frac{1}{2}\left[\sin(x+at)+\sin(x-at)\right],&\text{当}x-at\geqslant 0,t>0\text{时},\\
+    \frac{1}{2}\left[\sin(x+at)+\sin(at-x)\right],&\text{当}x-at< 0,t>0,x\geqslant 0\text{时}.
+\end{cases}$$\indent
+画图如下($0\leqslant x\leqslant 2\pi$)：\\\indent
+n=0: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~n=1:\\
+\includegraphics[scale=0.4]{n=0}
+\includegraphics[scale=0.4]{n=1}\\\indent
+n=2: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~n=3:\\\\
+\includegraphics[scale=0.4]{n=2}
+\includegraphics[scale=0.4]{n=3}\\\indent
+n=4: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~n=5:\\
+\includegraphics[scale=0.4]{n=4}
+\includegraphics[scale=0.4]{n=5}\\\indent
+n=6:\\
+\includegraphics[scale=0.4]{n=6}
+
+\newpage
+a
+\end{document}
